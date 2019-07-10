@@ -1,0 +1,15 @@
+[Unit]
+Description=Blobfuse Web Server Mounting
+After=network.target
+After=network-online.target
+
+[Service]
+User=www-data
+Group=www-data
+Type=oneshot
+ExecStart=/fuse-config/mount-all.sh
+ExecStop=/fuse-config/unmount-all.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
