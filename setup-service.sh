@@ -1,5 +1,5 @@
 #!/bin/bash
-for f in /fuse-config/conf.d/*; do
+for f in /fuse-config/conf.d/*.cfg; do
     filename="${f##*/}"
     basename="${filename%%.[^.]*}"
     mkdir -p "/mnt/fuse-${basename}"
