@@ -2,7 +2,7 @@
 
 Blobfuse Web Server Mounting
 
-Makes life easier, trust me.
+Takes multiple stored configuration files specifying which blob storage block to use and mounts the blob block into `/mnt/fuse-(blobname)`.
 
 ## Setup
 
@@ -10,11 +10,11 @@ Makes life easier, trust me.
 
 2. [Install blobfuse](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation)
 
-3. Create all necessary configuration files in the conf.d directory.  Use the `storage.cfg.example` file if necessary.  These configuration files are used by the blobfuse program.
+3. Create all necessary configuration files in the `conf.d` directory.  Use the `storage.cfg.example` file if necessary.  These configuration files are used by the blobfuse program.
 
-4. Create all necessary mount points based off the configuration names (The config file name without the extension) in the `/mnt/` directory.
+5. Run `sudo ./install-service.sh` to install the service file and make life easier.
 
-5. Run `sudo ./setup-service.sh` to set up the fuse-mount service.
+6. Delete `./conf.d/storage.cfg.example` before running.
 
 ## Usage
 
@@ -25,3 +25,9 @@ Start will mount all configured storage blobs
 Stop will unmount all mounted storage blobs
 
 Restart will perform the start and stop actions sequentially.
+
+## Notes
+
+Any time you add a new file in the `conf.d` directory, you must restart the fuse-mount service for any changes to take effect.
+
+For the time being, all mounts are configured to run under the `www-data` user because SO FAR there's only been a use for web servers.
