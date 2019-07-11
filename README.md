@@ -14,8 +14,6 @@ Takes multiple stored configuration files specifying which blob storage block to
 
 5. Run `sudo ./install-service.sh` to install the service file and make life easier.
 
-6. Delete `./conf.d/storage.cfg.example` before running.
-
 ## Usage
 
 The fuse-mount service accepts three service calls: `start`, `stop`, `restart`.
